@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ganzhou.mapper.ProfessionMapper">
+    
+    <resultMap type="Profession" id="ProfessionResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="type"    column="type"    />
+        <result property="delFlag"    column="del_flag"    />
+    </resultMap>
+
+    <sql id="selectProfessionVo">
+        select id, name, type, del_flag from profession
+    </sql>
+
+    <select id="selectProfessionList" parameterType="Profession" resultMap="ProfessionResult">
+        <include refid="selectProfessionVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+        </where>
+    </select>
+    
+    <select id="selectProfessionById" parameterType="Long" resultMap="ProfessionResult">
+        <include refid="selectProfessionVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertProfession" parameterType="Profession" useGeneratedKeys="true" keyProperty="id">
+        insert into profession
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="type != null">type,</if>
+            <if test="delFlag != null">del_flag,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="type != null">#{type},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+         </trim>
+    </insert>
+
+    <update id="updateProfession" parameterType="Profession">
+        update profession
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteProfessionById" parameterType="Long">
+        delete from profession where id = #{id}
+    </delete>
+
+    <delete id="deleteProfessionByIds" parameterType="String">
+        delete from profession where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

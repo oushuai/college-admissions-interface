@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ganzhou.mapper.SchoolProfessionMapper">
+    
+    <resultMap type="SchoolProfession" id="SchoolProfessionResult">
+        <result property="id"    column="id"    />
+        <result property="schoolId"    column="school_id"    />
+        <result property="professionId"    column="profession_id"    />
+        <result property="year"    column="year"    />
+        <result property="coverImg"    column="cover_img"    />
+        <result property="introduction"    column="introduction"    />
+    </resultMap>
+
+    <sql id="selectSchoolProfessionVo">
+        select id, school_id, profession_id, year, cover_img, introduction from school_profession
+    </sql>
+
+    <select id="selectSchoolProfessionList" parameterType="SchoolProfession" resultMap="SchoolProfessionResult">
+        <include refid="selectSchoolProfessionVo"/>
+        <where>  
+            <if test="schoolId != null  and schoolId != ''"> and school_id = #{schoolId}</if>
+            <if test="professionId != null "> and profession_id = #{professionId}</if>
+            <if test="year != null "> and year = #{year}</if>
+            <if test="coverImg != null  and coverImg != ''"> and cover_img = #{coverImg}</if>
+            <if test="introduction != null  and introduction != ''"> and introduction = #{introduction}</if>
+        </where>
+    </select>
+    
+    <select id="selectSchoolProfessionById" parameterType="Long" resultMap="SchoolProfessionResult">
+        <include refid="selectSchoolProfessionVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSchoolProfession" parameterType="SchoolProfession">
+        insert into school_profession
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="schoolId != null">school_id,</if>
+            <if test="professionId != null">profession_id,</if>
+            <if test="year != null">year,</if>
+            <if test="coverImg != null">cover_img,</if>
+            <if test="introduction != null">introduction,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="schoolId != null">#{schoolId},</if>
+            <if test="professionId != null">#{professionId},</if>
+            <if test="year != null">#{year},</if>
+            <if test="coverImg != null">#{coverImg},</if>
+            <if test="introduction != null">#{introduction},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSchoolProfession" parameterType="SchoolProfession">
+        update school_profession
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="schoolId != null">school_id = #{schoolId},</if>
+            <if test="professionId != null">profession_id = #{professionId},</if>
+            <if test="year != null">year = #{year},</if>
+            <if test="coverImg != null">cover_img = #{coverImg},</if>
+            <if test="introduction != null">introduction = #{introduction},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSchoolProfessionById" parameterType="Long">
+        delete from school_profession where id = #{id}
+    </delete>
+
+    <delete id="deleteSchoolProfessionByIds" parameterType="String">
+        delete from school_profession where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
