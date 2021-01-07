@@ -43,8 +43,7 @@ public class ApplyInfoController extends BaseController
      */
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(ApplyInfo applyInfo)
-    {
+    public TableDataInfo list(ApplyInfo applyInfo) throws Exception {
         startPage();
         List<ApplyInfo> list = applyInfoService.selectApplyInfoList(applyInfo);
         return getDataTable(list);

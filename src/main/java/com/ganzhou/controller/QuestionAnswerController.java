@@ -41,8 +41,7 @@ public class QuestionAnswerController extends BaseController
      */
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(QuestionAnswer questionAnswer)
-    {
+    public TableDataInfo list(QuestionAnswer questionAnswer) throws Exception {
         startPage();
         List<QuestionAnswer> list = questionAnswerService.selectQuestionAnswerList(questionAnswer);
         return getDataTable(list);

@@ -1,7 +1,8 @@
 package com.ganzhou.utils.page;
 
-import com.ruoyi.common.constant.Constants;
-import com.ruoyi.common.utils.ServletUtils;
+
+import com.ganzhou.utils.Constants;
+import com.ganzhou.utils.ServletUtils;
 
 /**
  * 表格数据处理

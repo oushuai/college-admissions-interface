@@ -1,6 +1,7 @@
 package com.ganzhou.utils;
 
-import com.ruoyi.common.core.text.StrFormatter;
+
+import com.ganzhou.utils.text.StrFormatter;
 
 import java.util.Collection;
 import java.util.Map;

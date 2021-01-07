@@ -1,7 +1,7 @@
 package com.ganzhou.utils.sql;
 
-import com.ruoyi.common.exception.base.BaseException;
-import com.ruoyi.common.utils.StringUtils;
+
+import com.ganzhou.utils.StringUtils;
 
 /**
  * sql操作工具类
@@ -18,11 +18,11 @@ public class SqlUtil
     /**
      * 检查字符，防止注入绕过
      */
-    public static String escapeOrderBySql(String value)
+    public static String escapeOrderBySql(String value) throws Exception
     {
         if (StringUtils.isNotEmpty(value) && !isValidOrderBySql(value))
         {
-            throw new BaseException("参数不符合规范，不能进行查询");
+            throw new Exception("参数不符合规范，不能进行查询");
         }
         return value;
     }

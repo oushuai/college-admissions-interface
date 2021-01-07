@@ -42,8 +42,7 @@ public class UserController extends BaseController
      */
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(User user)
-    {
+    public TableDataInfo list(User user) throws Exception {
         startPage();
         List<User> list = userService.selectUserList(user);
         return getDataTable(list);

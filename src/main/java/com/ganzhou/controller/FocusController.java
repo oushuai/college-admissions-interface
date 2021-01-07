@@ -42,8 +42,7 @@ public class FocusController extends BaseController
      */
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Focus focus)
-    {
+    public TableDataInfo list(Focus focus) throws Exception {
         startPage();
         List<Focus> list = focusService.selectFocusList(focus);
         return getDataTable(list);

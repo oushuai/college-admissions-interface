@@ -42,8 +42,7 @@ public class SchoolNewsController extends BaseController
      */
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(SchoolNews schoolNews)
-    {
+    public TableDataInfo list(SchoolNews schoolNews) throws Exception {
         startPage();
         List<SchoolNews> list = schoolNewsService.selectSchoolNewsList(schoolNews);
         return getDataTable(list);

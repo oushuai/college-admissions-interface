@@ -40,8 +40,7 @@ public class ProfessionController extends BaseController
      * 查询列表
      */
     @ResponseBody
-    public TableDataInfo list(Profession profession)
-    {
+    public TableDataInfo list(Profession profession) throws Exception {
         startPage();
         List<Profession> list = professionService.selectProfessionList(profession);
         return getDataTable(list);

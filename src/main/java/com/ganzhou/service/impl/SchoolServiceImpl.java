@@ -1,12 +1,13 @@
 package com.ganzhou.service.impl;
 
 import java.util.List;
+
+import com.ganzhou.utils.text.Convert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ganzhou.mapper.SchoolMapper;
 import com.ganzhou.domain.School;
 import com.ganzhou.service.ISchoolService;
-import com.ruoyi.common.core.text.Convert;
 
 /**
  * Service业务层处理

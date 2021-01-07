@@ -1,6 +1,6 @@
 package com.ganzhou.utils;
 
-import com.ruoyi.common.core.text.Convert;
+import com.ganzhou.utils.text.Convert;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

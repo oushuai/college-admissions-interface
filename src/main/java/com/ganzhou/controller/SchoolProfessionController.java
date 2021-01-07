@@ -42,8 +42,7 @@ public class SchoolProfessionController extends BaseController
      */
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(SchoolProfession schoolProfession)
-    {
+    public TableDataInfo list(SchoolProfession schoolProfession) throws Exception {
         startPage();
         List<SchoolProfession> list = schoolProfessionService.selectSchoolProfessionList(schoolProfession);
         return getDataTable(list);

@@ -52,8 +52,7 @@ public class BaseController
     /**
      * 设置请求分页数据
      */
-    protected void startPage()
-    {
+    protected void startPage() throws Exception {
         PageDomain pageDomain = TableSupport.buildPageRequest();
         Integer pageNum = pageDomain.getPageNum();
         Integer pageSize = pageDomain.getPageSize();
@@ -67,8 +66,7 @@ public class BaseController
     /**
      * 设置请求排序数据
      */
-    protected void startOrderBy()
-    {
+    protected void startOrderBy() throws Exception {
         PageDomain pageDomain = TableSupport.buildPageRequest();
         if (StringUtils.isNotEmpty(pageDomain.getOrderBy()))
         {
