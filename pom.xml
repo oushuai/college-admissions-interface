@@ -28,7 +28,12 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.73</version>
         </dependency>
-
+        <!--阿里数据库连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.14</version>
+        </dependency>
         <!--文件上传工具类 -->
         <dependency>
             <groupId>commons-fileupload</groupId>
@@ -57,6 +62,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
         </dependency>
     </dependencies>
     <build>

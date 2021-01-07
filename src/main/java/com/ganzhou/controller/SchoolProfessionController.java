@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2021-01-06
  */
 @Controller
-@RequestMapping("/system/profession")
+@RequestMapping("/system/schoolprofession")
 public class SchoolProfessionController extends BaseController
 {
     private String prefix = "system/profession";
@@ -34,7 +34,7 @@ public class SchoolProfessionController extends BaseController
     @GetMapping()
     public String profession()
     {
-        return prefix + "/profession";
+        return prefix + "/school/profession";
     }
 
     /**
